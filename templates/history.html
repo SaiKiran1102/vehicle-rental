@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f5f9;
+            padding: 40px 20px;
+        }
+
+        header {
+            background-color: #007bff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .nav-left a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .nav-left a:hover {
+            text-decoration: underline;
+            color: #ffc107;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        li {
+            background-color: #ffffff;
+            padding: 20px 25px;
+            margin: 12px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+            transition: transform 0.2s ease;
+        }
+
+        li:hover {
+            transform: translateY(-2px);
+        }
+
+        li strong {
+            color: #343a40;
+            font-size: 18px;
+        }
+
+        li span {
+            display: block;
+            color: #666;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        li span::before {
+            content: '📅 ';
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 10px 20px;
+            }
+
+            .nav-left a {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            li {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <a href="/home">🏠 Home</a>
+            <a href="/vehicles">🚗 Vehicles</a>
+            <a href="/logout">🔓 Logout</a>
+        </div>
+    </header>
+
+    <h2>Your Booking History</h2>
+    <ul>
+        {% for b in bookings %}
+            <li>
+                <strong>{{ b.vehicle }}</strong>
+                <span>Booked on: {{ b.date }} at {{ b.time }}</span>
+                <span>Return Date: {{ b.return_date }}</span>
+            </li>
+        {% else %}
+            <li style="text-align: center; color: #999;">No bookings found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

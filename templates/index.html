@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Rental - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        header {
+            background: linear-gradient(to right, #007bff, #6610f2);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header a:hover {
+            color: #ffd700;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .home-hero {
+            position: relative;
+            height: 90vh;
+            background: url('{{ url_for("static", filename="images/chatgpt_background.png") }}') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            backdrop-filter: blur(8px);
+        }
+
+        .overlay h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+
+        .overlay p {
+            font-size: 22px;
+            color: #e0e0e0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .overlay h1 {
+                font-size: 34px;
+            }
+
+            .overlay p {
+                font-size: 18px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-left,
+            .nav-right {
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 5px 0;
+            }
+
+            header a {
+                margin: 6px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <a href="/">Home</a>
+            <a href="/vehicles">Vehicles</a>
+        </div>
+        <div class="nav-right">
+            <a href="/login">Login</a>
+            <a href="/admin_login">Admin Login</a>
+        </div>
+    </header>
+
+    <div class="home-hero">
+        <div class="overlay">
+            <h1>Welcome to Vehicle Rental Portal</h1>
+            <p>Book your ride anytime, anywhere!</p>
+        </div>
+    </div>
+</body>
+</html>

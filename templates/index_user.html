@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('{{ url_for("static", filename="images/chatgpt_background.png") }}') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        header {
+            background-color: rgba(0, 123, 255, 0.9);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        header a:hover {
+            color: #ffc107;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-top: 150px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.85);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .welcome h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #444;
+            font-size: 18px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+                gap: 15px;
+            }
+
+            .welcome h1 {
+                font-size: 26px;
+            }
+
+            .welcome {
+                margin-top: 100px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body background="">
+    <header>
+        <a href="/index_user">🏠 Home</a>
+        <a href="/vehicles">🚗 Vehicles</a>
+        <a href="/history">📖 Booking History</a>
+        <a href="/logout">🔓 Logout</a>
+    </header>
+
+    <div class="welcome">
+        <h1>Welcome, {{ session['username'] }}</h1>
+        <p>Explore available vehicles and manage your bookings easily!</p>
+    </div>
+</body>
+</html>
